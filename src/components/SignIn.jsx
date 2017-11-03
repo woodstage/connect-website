@@ -1,17 +1,34 @@
 import React, { PureComponent } from "react";
+import CognitoHandler from "../utils/CognitoHandler";
 
 class SignIn extends PureComponent {
   signIn() {
-
+    CognitoHandler.signIn(this.username.value, this.password.value)
+      .then(result => {
+        console.log("access token + " + result.getAccessToken().getJwtToken());
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
     return (
       <div className="SignIn">
-        Email: <input className="email" ref={n => (this.email = n.value)} />
+        username:{" "}
+        <input
+          className="username"
+          ref={n => {
+            this.username = n;
+          }}
+        />
         <br />
-        Password:{" "}
-        <input className="password" ref={n => (this.password = n.value)} />
+        password:{" "}
+        <input
+          className="password"
+          type="password"
+          ref={n => {
+            this.password = n;
+          }}
+        />
         <br />
         <button onClick={this.signIn.bind(this)}>Sign In</button>
       </div>
