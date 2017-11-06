@@ -55,7 +55,6 @@ CognitoHandler.confirmRegistration = (username, verificationCode) => {
 };
 
 CognitoHandler.signIn = (username, password) => {
-  debugger
   const authenticationData = {
     Username: username,
     Password: password
