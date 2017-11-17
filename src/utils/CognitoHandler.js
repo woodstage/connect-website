@@ -69,24 +69,7 @@ CognitoHandler.signIn = (username, password) => {
     user.authenticateUser(authenticationDetails, {
       onSuccess: result => {
         resolve(result);
-
-        // //POTENTIAL: Region needs to be set if not already set previously elsewhere.
-        // AWS.config.region = "<region>";
-
-        // AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-        //   IdentityPoolId: "...", // your identity pool id here
-        //   Logins: {
-        //     // Change the key below according to the specific region your user pool is in.
-        //     "cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>": result
-        //       .getIdToken()
-        //       .getJwtToken()
-        //   }
-        // });
-
-        // // Instantiate aws sdk service objects now that the credentials have been updated.
-        // // example: var s3 = new AWS.S3();
       },
-
       onFailure: function(err) {
         reject(err);
       }
